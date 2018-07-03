@@ -1,16 +1,15 @@
-var react = require('./rectangle');    
+var rect = require('./rectangle');    
 
 function solveReact(l,b){
-    console.log("area of retangle"+l);
-    console.log("area of retangle"+b);
-
-    if(l <= 0 || b <= 0){
-        console.log("illegal value");
-    }else{
-        console.log("calculated area"+react.area(l,b));
-        console.log("calculated perimeter"+react.perimeter(l,b));
-    }
-
+    rect(l, b, (err,rectangle) => {
+        if(err){
+            console.log("Error, ",err.message);
+        }else{
+            console.log("AREA", rectangle.area());
+            console.log("PERIMETER", rectangle.perimeter());
+        }
+    });
+    console.log("executed after callback");
 }
 
 solveReact(2,3);
