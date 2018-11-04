@@ -1,0 +1,26 @@
+<html>
+    <script>
+      function hostReachable(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange=function() {
+  if (xhr.readyState==4 && xhr.status==200) {
+    var response = xhr.responseText; //if you need to do something with the returned value
+    console.log(response);
+  }
+}
+    xhr.open("GET",
+  "http://localhost:2000/?url=http://static-hw.xvideos.com/v3/img/skins/default/favicon.ico?time=1541259508", true); // assuming you’re hosting it locally
+var data = {
+  headers: {
+    Accept: "application/json",
+    Origin: "http://static-hw.xvideos.com/v3/img/skins/default/favicon.ico?time=1541259508"
+ },
+  method: 'GET'
+};
+xhr.send(JSON.stringify(data));
+}
+    </script>
+    <body>
+        <Button onclick="hostReachable()"></Button>
+    </body>
+</html>
